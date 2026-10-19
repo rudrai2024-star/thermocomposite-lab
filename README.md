@@ -13,14 +13,36 @@ dashboard shows an explicit empty state.
 
 ## Run locally
 
+### React + FastAPI workspace
+
+Start the API and frontend in separate terminals from the project root:
+
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-streamlit run app.py
+# Terminal 1
+.venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8010
+
+# Terminal 2
+cd frontend
+npm ci
+npm run dev -- --host 127.0.0.1 --port 5173
 ```
 
-Run the verification suite with `pytest`.
+Open `http://127.0.0.1:5173`. The frontend expects the API at
+`http://127.0.0.1:8010/api/v1` by default. Confirm the API is running with:
+
+```bash
+curl http://127.0.0.1:8010/api/v1/health
+```
+
+### Legacy Streamlit workspace
+
+```bash
+source .venv/bin/activate
+.venv/bin/pip install -r requirements.txt
+.venv/bin/streamlit run app.py
+```
+
+Run the verification suite with `.venv/bin/pytest -q tests backend/tests`.
 
 ## Supported model
 

@@ -5,10 +5,20 @@ const API_BASE_URL = (
 export type HealthResponse = { status: string; version?: string; [key: string]: unknown }
 
 export async function apiRequest<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    ...init,
-    headers: { 'Content-Type': 'application/json', ...init?.headers },
-  })
+  let response: Response
+  try {
+    response = await fetch(`${API_BASE_URL}${path}`, {
+      ...init,
+      headers: { 'Content-Type': 'application/json', ...init?.headers },
+    })
+  } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error(
+        `Backend unavailable at ${API_BASE_URL}. Start FastAPI with ".venv/bin/python -m uvicorn backend.main:app --host 127.0.0.1 --port 8010".`,
+      )
+    }
+    throw error
+  }
   if (!response.ok) throw new Error(`API request failed (${response.status})`)
   return response.json() as Promise<T>
 }
