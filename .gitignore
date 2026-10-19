@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+env/
+.DS_Store
+.streamlit/secrets.toml
+reports/
+backend/thermocomposite.db
+.backups/
+frontend/dist/
+frontend/*.tsbuildinfo
+frontend/*.js
+frontend/*.d.ts
