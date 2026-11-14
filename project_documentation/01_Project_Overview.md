@@ -1,0 +1,7 @@
+# 01 — Project Overview
+
+**Name:** ThermoComposite Lab. **Category:** engineering/scientific computing prototype. **Domains:** composite materials, thermal response, laminate mechanics, laboratory test data, and quantity planning. Intended users include students, researchers, and engineers exploring calculations or organizing measurements.
+
+The motivation is to make selected composite thermal and test workflows accessible in one application. Implemented activities include thermal estimates, CLT laminate calculations, thermal curves, quantity conversion, selected test metrics from entered values, deterministic software fixtures, and research-record search. The system cannot actuate laboratory equipment, acquire sensor data, certify material allowables, or replace physical experiments.
+
+Functional objectives evidenced in source: calculate temperature-dependent outputs under simplified assumptions; evaluate a laminate; compare curves; record material usage; calculate metrics for nine destructive test types; and query normalized research records. Technical objectives include a React client, FastAPI JSON API, SQL persistence and migrations. Scientific objectives are transparent calculations, not validated accuracy. Boundaries include estimate-only material constants, zero stored observations, limited material/API coverage, no NDT signal processing, and no connected account system. See [equations](05_Scientific_Methodology_and_Equations.md) and [limitations](16_Limitations_and_Research_Gaps.md).
